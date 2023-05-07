@@ -86,10 +86,10 @@ def GetEmp():
 
 @app.route("/fetchdata", methods=['GET', 'POST'])
 def GetEmpOutput():
-    id = request.form['emp_id']
-    get_sql = "select * from employee where emp_id = '&id'"
+    ids = request.form['emp_id']
+    get_sql = "select * from employee where emp_id = %s"
     cursor = db_conn.cursor()
-    cursor.execute(get_sql)
+    cursor.execute(get_sql, ids)
     myresult = cursor.fetchall()
     id = myresult
     
