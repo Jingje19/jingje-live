@@ -91,7 +91,7 @@ def GetEmpOutput():
     cursor = db_conn.cursor()
     cursor.execute(get_sql, ids)
     myresult = cursor.fetchall()
-    eid = myresult[0]
+    eid = request.form['emp_id']
     
     return render_template('GetEmpOutput.html')
 
