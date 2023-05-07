@@ -86,6 +86,7 @@ def GetEmp():
 
 @app.route("/fetchdata", methods=['GET', 'POST'])
 def GetEmpOutput():
+    emp_id = request.form['emp_id']
     return render_template('GetEmpOutput.html')
 
 
