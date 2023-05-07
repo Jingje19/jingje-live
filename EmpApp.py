@@ -86,7 +86,12 @@ def GetEmp():
 
 @app.route("/fetchdata", methods=['GET', 'POST'])
 def GetEmpOutput():
-    emp_id = request.form['emp_id']
+    id = request.form['emp_id']
+    fname = request.form['first_name']
+    lname = request.form['last_name']
+    interest = request.form['pri_skill']
+    location = request.form['location']
+    image_url = request.form['emp_image_file']
     return render_template('GetEmpOutput.html')
 
 
