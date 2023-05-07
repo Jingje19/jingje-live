@@ -84,7 +84,7 @@ def AddEmp():
 def GetEmp():
     return render_template('GetEmp.html')
 
-@app.route("/fetchdata", methods=['GET', 'POST'])
+@app.route("/fetchdata", methods=['POST'])
 def GetEmpOutput():
     ids = request.form['emp_id']
     get_sql = "select * from employee where emp_id = %s"
@@ -92,7 +92,7 @@ def GetEmpOutput():
     cursor.execute(get_sql, ids)
     myresult = cursor.fetchall()
     eid = request.form['emp_id']
-    
+    cursor.close()
     return render_template('GetEmpOutput.html')
 
 
