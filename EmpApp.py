@@ -93,7 +93,7 @@ def GetEmpOutput():
     myresult = cursor.fetchall()
     eid = request.form['emp_id']
     cursor.close()
-    return render_template('GetEmpOutput.html',eid = myresult[0][0], eid = myresult[0][1], eid = myresult[0][2], eid = myresult[0][3], eid = myresult[0][4])
+    return render_template('GetEmpOutput.html',eid = myresult[0][0], fname = myresult[0][1], lname = myresult[0][2], interest = myresult[0][3], location = myresult[0][4])
 
 
 if __name__ == '__main__':
