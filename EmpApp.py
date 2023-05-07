@@ -92,10 +92,6 @@ def GetEmpOutput():
     cursor.execute(get_sql, ids)
     myresult = cursor.fetchall()
     eid = myresult[0]
-    fname = myresult[1]
-    lname = myresult[2]
-    interest = myresult[3]
-    location = myresult[4]
     
     return render_template('GetEmpOutput.html')
 
