@@ -104,8 +104,7 @@ def GetEmpOutput():
 
         s3_object_body = s3_response.get('Body')
 
-        except Exception as e:
-            return str(e)
+     
     finally:
         cursor.close()
     return render_template('GetEmpOutput.html',eid = myresult[0][0], fname = myresult[0][1], lname = myresult[0][2], interest = myresult[0][3], location = myresult[0][4], image_url = s3_object_body)
