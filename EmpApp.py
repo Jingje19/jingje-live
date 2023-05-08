@@ -95,7 +95,7 @@ def GetEmpOutput():
     
     emp_image_file_name_in_s3 = "emp-id-" + str(ids)
     s3 = boto3.resource('s3')
-    s3_client = s3_resource.meta.client
+    s3_client = s3.meta.client
 
     try:
         print("Data inserted in MySQL RDS... uploading image to S3...")
