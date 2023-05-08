@@ -28,7 +28,7 @@ def home():
 
 @app.route("/aboutKJJ", methods=['GET','POST'])
 def about1():
-    return render_template('www.jingje.s3-website-us-east-1.amazonaws.com')
+    return redirect("http://jingje.s3-website-us-east-1.amazonaws.com")
 
 
 @app.route("/aboutHR", methods=['GET','POST'])
