@@ -2,37 +2,54 @@
 <html>
 <head>
 	<title>Add Employee Information</title>
+	<link rel="stylesheet" href="style.css">
 </head>
-<center>
-	<font color="black" size="4" style="font-family: avenir">
-
-		<h1 style="color: DodgerBlue">Employee Database</h1>
-
-		<body bgcolor="lightgrey">
-
-			<form action="/addemp" autocomplete="on" method = "POST" enctype="multipart/form-data">
-
-				<button type="submit" formaction="/getemp" style="background: grey; height: 45px; width: 200px; color:white; font:oblique;">GET EMPLOYEE INFORMATION</button><br><br>
-
-		  		Employee ID:<br> <input style="height:25px;font-size:14pt; color:grey;" type="number" name="emp_id" autofocus size="40"><br><br>
-
-		  		First Name:<br> <input style="height:25px;font-size:14pt;color:grey;" type="text" name="first_name" ><br><br>
-
-		  		Last Name:<br> <input style="height:25px;font-size:14pt;color:grey;" type="text" name="last_name"><br><br>
-
-		  		Primary Skills:<br> <input style="height:25px;font-size:14pt;color:grey;" type="text" name="pri_skill"><br><br>
-
-		  		Location:<br> <input style="height:25px;font-size:14pt;color:grey;" type="text" name="location"><br><br>
-
-		  		Image: <input type=file name="emp_image_file" style="height:25px;font-size:14pt;color:grey;"> <br><br>
-
-		  		<button type="submit" style="background: grey; height: 45px; width: 200px; color: white; size: 5; font:oblique;">UPDATE DATABASE</button>
-
-			</form>
-<a href="/about">About Us</a>
+		<body>
+			<div class="shadow">
+				<div class="add_emp_otter add_emp_out">
+					<div class="add_emp_area">
+						<h1 style="color: DodgerBlue">Employee Database</h1>
+						<form action="/addemp" autocomplete="on" method = "POST" enctype="multipart/form-data">
+		
+							<button type="submit" formaction="/getemp">GET EMPLOYEE INFORMATION</button>
+		
+							<label for="">Employee ID:</label><input type="number" name="emp_id" autofocus size="40">
+		
+							<label for="">First Name:</label><input  type="text" name="first_name" >
+		
+							<label for="">Last Name:</label><input   type="text" name="last_name">
+							<label for="">Date of Birth:</label>
+							<input type="date" name = "birth_date">
+							<label for="">Gender</label>
+							<div class="gender">
+								Male:<input type="radio" name="gender">
+							Female:<input type="radio" name="gender">
+							</div>
+							<label for="">Email Address:</label>
+							<input type="email" name ="email">
+							<label for="">Phone Number:</label>
+							<input type="number" name ="phone">
+							<label for="">Address</label>
+							<input type="text" name="address">
+							<label for="">Department</label>
+							<input type="text" name ="department">
+							<label for="">Job Title</label>
+							<input type="text" name = "job">
+							<label for="">Employment Start Date:</label>
+							<input type="date" name = "date">
+						 
+			
+							<br><br>
+							<!-- <input type="submit" value="UPDATE DATABASE"> -->
+							  
+							<button type="submit" class="glow-on-hover">UPDATE DATABASE</button>
+						</form>
+						<a class="learn_btn" href="/about">About Us</a>
+						
+					</div>
+				</div>
+			</div>
 		</body>
 
-	</font>
-</center>
+ 
 </html>
-
