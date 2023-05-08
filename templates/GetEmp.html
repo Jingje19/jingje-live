@@ -2,29 +2,30 @@
 <html>
 <head>
 	<title>Get Employee Information</title>
+	<link rel="stylesheet" href="style.css">
 </head>
-<center>
-	<font color="black" size="5" style="font-family: avenir">
 
-		<h1 style="color: DodgerBlue">Employee Information</h1>
-
-		<body bgcolor="lightgrey">
-
-			<form action="/fetchdata" autocomplete="on" method="POST">
-
-				<h2 style="color: grey">Enter Employee ID</h2>
-
-		  		Employee ID:<br> <input style="height:25px;font-size:14pt;" type="number" name="emp_id" autofocus size="40"><br><br>
-
-
-		  		<button type="submit" style="background: grey; height: 45px; width: 200px; color: white; size: 5; font:oblique;">FETCH INFO</button><br><br>
-
-		  		<button type="submit" formaction="/" style="background: white	; height: 45px; width: 200px; color: black; size: 5; font:oblique;" method="GET">GO TO UPDATE DATABASE PAGE</button>
-
-			</form>
-
+		<body>
+			<div class="shadow">
+				<div class="add_emp_area add_emp_out">
+					<h1 style="color: DodgerBlue">Employee Information</h1>
+					<form action="/fetchdata" autocomplete="on" method="POST">
+	
+						<h2 style="text-align: center;">Enter Employee ID</h2>
+	
+						<input style="margin: 20px 0;" type="number" name="emp_id" autofocus size="40">
+	
+					 
+						<button type="submit">FETCH INFO</button>
+						<br><br>
+						<button type="submit" formaction="/" class="glow-on-hover">GO TO UPDATE DATABASE PAGE</button>
+						<!-- <input type="submit"  value="GO TO UPDATE DATABASE PAGE"> -->
+	
+					</form>
+				</div>
+			</div>
+			
 		</body>
-	</font>
-</center>
+	 
 </html>
 
