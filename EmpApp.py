@@ -38,12 +38,12 @@ def AddEmp():
     last_name = request.form['last_name']
     birth_date = request.form['birth_date']
     gender = request.form['gender']
-    email = request.files['email']
-    phone = request.files['phone']
-    address = request.files['address']
-    department = request.files['department']
-    job = request.files['job']
-    date = request.files['date']
+    email = request.form['email']
+    phone = request.form['phone']
+    address = request.form['address']
+    department = request.form['department']
+    job = request.form['job']
+    date = request.form['date']
 
     insert_sql = "INSERT INTO employee VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
     cursor = db_conn.cursor()
