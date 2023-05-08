@@ -2,39 +2,80 @@
 <html>
 <head>
 	<title>Employee Information</title>
+	<link rel="stylesheet" href="style.css">
 </head>
-<center>
-	<font color="black" size="5" style="font-family: avenir">
-
-		<h1 style="color: DodgerBlue">Employee Information</h1>
-
-		<body bgcolor="lightgrey">
-
-			<form>
-
-				<div>
-
-			  		Employee ID:<br> {{ eid }} <br><br>
-
-			  		First Name:<br> {{ fname }} <br><br>
-
-			  		Last Name:<br> {{ lname }} <br><br>
-
-			  		Primary Interest:<br> {{ interest }} <br><br>
-
-			  		Location:<br> {{ location }} <br><br>
-
-			  		Image URL: <br> {{ image_url }} <br><br>
-
-			  		<button type="submit" style="background: grey; height: 45px; width: 200px; color:white; font:oblique;" formaction="/getemp">RESET</button><br><br>
-
-			  	</div>
-
-			</form>
-
+		<body>
+			<div class="shadow">
+				<div class="add_emp_area add_emp_out">
+					<h1 style="color: DodgerBlue">Employee Information</h1>
+					<form>
+		
+						<div class="table_data">
+							<table id="customers">
+								<tr>
+									<td> Employee ID:</td>
+									<td>{{ eid }} </td>
+								</tr>
+								<tr>
+									<td>First Name:</td>
+									<td>{{ fname }} </td>
+								</tr>
+								<tr>
+									<td>Last Name:</td>
+									<td>{{ lname }}</td>
+								</tr>
+								 
+								<tr>
+									<td>Image URL:</td>
+									<td>{{ image_url }}</td>
+								</tr>
+								<tr>
+									<td>Date of Birth:</td>
+									<td>{{ Birth }}</td>
+								</tr>
+								<tr>
+									<td>Gender:</td>
+									<td>{{ Gender }}</td>
+								</tr>
+								<tr>
+									<td>Email Address:</td>
+									<td>{{ Email }}</td>
+								</tr>
+								<tr>
+									<td>Phone Number:</td>
+									<td>{{ Phone }}</td>
+								</tr>
+								<tr>
+									<td>Address:</td>
+									<td>{{ Address }}</td>
+								</tr>
+								<tr>
+									<td>Department:</td>
+									<td>{{ Department }}</td>
+								</tr>
+								<tr>
+									<td>Job Title:</td>
+									<td>{{ Job_title }}</td>
+								</tr>
+								<tr>
+									<td>Employment Start Date:</td>
+									<td>{{ Employment_Start }}</td>
+								</tr>
+								 
+							</table>
+							<button type="submit" formaction="/getemp" class="glow-on-hover">RESET</button>
+							<!-- <input type="submit" value="RESET" formaction="/getemp"> -->
+							 
+							 
+		
+						  </div>
+		
+					</form>
+		
+				</div>
+			</div>
+			
+			
 		</body>
-
-	</font>
-</center>
 </html>
 
