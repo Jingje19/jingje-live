@@ -44,18 +44,19 @@ def AddEmp():
     department = request.form['department']
     job = request.form['job']
     date = request.form['date']
+    salary = request.form['salary']
 
-    insert_sql = "INSERT INTO employee VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+    insert_sql = "INSERT INTO employee VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
     cursor = db_conn.cursor()
 
     try:
 
-        cursor.execute(insert_sql, (emp_id, first_name, last_name, birth_date, gender, email, phone, address, department, job, date))
+        cursor.execute(insert_sql, (emp_id, first_name, last_name, birth_date, gender, email, phone, address, department, job, date, salary))
         db_conn.commit()
         emp_name = "" + first_name + " " + last_name
         # Uplaod file in S3 #
         emp_image_file_name_in_s3 = "emp-id-" + str(emp_id)
-        emp_body = "emp id: "+ str(emp_id) + "\nfirst name: "+ str(first_name) + "\nlast name: "+ str(last_name) +"\nBirth Date: "+ str(birth_date) +"\nGender: "+ str(gender) +"\nEmail: "+ str(email) +"\nPhone: "+ str(phone) +"\nAddress: "+ str(address) +"\nDepartment: "+ str(department) +"\nJob Title: "+ str(job) +"\nStart Date: "+ str(date)
+        emp_body = "emp id: "+ str(emp_id) + "\nfirst name: "+ str(first_name) + "\nlast name: "+ str(last_name) +"\nBirth Date: "+ str(birth_date) +"\nGender: "+ str(gender) +"\nEmail: "+ str(email) +"\nPhone: "+ str(phone) +"\nAddress: "+ str(address) +"\nDepartment: "+ str(department) +"\nJob Title: "+ str(job) +"\nStart Date: "+ str(date) +"\nSalary: "+ str(salary)
         s3 = boto3.resource('s3')
 
         try:
@@ -112,7 +113,7 @@ def GetEmpOutput():
     finally:
         cursor.close()
     return render_template('GetEmpOutput.html',eid = myresult[0][0], fname = myresult[0][1], lname = myresult[0][2], Birth = myresult[0][3], Gender = myresult[0][4]
-                          , Email = myresult[0][5], Phone = myresult[0][6], Address = myresult[0][7], Department = myresult[0][8], Job_title = myresult[0][9], Employment_Start = myresult[0][10])
+                          , Email = myresult[0][5], Phone = myresult[0][6], Address = myresult[0][7], Department = myresult[0][8], Job_title = myresult[0][9], Employment_Start = myresult[0][10], Salary = myresult[0][11])
 
 
 if __name__ == '__main__':
