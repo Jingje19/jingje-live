@@ -113,7 +113,7 @@ def GetEmpOutput():
     finally:
         cursor.close()
     return render_template('GetEmpOutput.html',eid = myresult[0][0], fname = myresult[0][1], lname = myresult[0][2], Birth = myresult[0][3], Gender = myresult[0][4]
-                          , Email = myresult[0][5], Phone = myresult[0][6], Address = myresult[0][7], Department = myresult[0][8], Job_title = myresult[0][9], Employment_Start = myresult[0][10], Salary = myresult[0][11])
+                          , Email = myresult[0][5], Phone = myresult[0][6], Address = myresult[0][7], Department = myresult[0][8], Job_title = myresult[0][9], Employment_Start = myresult[0][10], salary = myresult[0][11])
 
 
 if __name__ == '__main__':
