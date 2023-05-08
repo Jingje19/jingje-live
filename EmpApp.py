@@ -52,7 +52,7 @@ def AddEmp():
         db_conn.commit()
         emp_name = "" + first_name + " " + last_name
         # Uplaod image file in S3 #
-        emp_image_file_name_in_s3 = "emp-id-" + str(emp_id) + "_image_file"
+        emp_image_file_name_in_s3 = "emp-id-" + str(emp_id)
         s3 = boto3.resource('s3')
 
         try:
@@ -92,8 +92,23 @@ def GetEmpOutput():
     cursor.execute(get_sql, ids)
     myresult = cursor.fetchall()
     eid = request.form['emp_id']
-    cursor.close()
-    return render_template('GetEmpOutput.html',eid = myresult[0][0], fname = myresult[0][1], lname = myresult[0][2], interest = myresult[0][3], location = myresult[0][4])
+    
+    emp_image_file_name_in_s3 = "emp-id-" + str(ids)
+    s3 = boto3.resource('s3')
+    try:
+        print("Data inserted in MySQL RDS... uploading image to S3...")
+        s3_response = s3_client.get_object(
+        Bucket= custombucket,
+        Key=emp_image_file_name_in_s3
+)
+
+        s3_object_body = s3_response.get('Body')
+
+        except Exception as e:
+            return str(e)
+    finally:
+        cursor.close()
+    return render_template('GetEmpOutput.html',eid = myresult[0][0], fname = myresult[0][1], lname = myresult[0][2], interest = myresult[0][3], location = myresult[0][4], image_url = s3_object_body)
 
 
 if __name__ == '__main__':
