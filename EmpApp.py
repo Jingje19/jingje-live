@@ -97,7 +97,7 @@ def GetEmpOutput():
     s3 = boto3.resource('s3')
     try:
         print("Data inserted in MySQL RDS... uploading image to S3...")
-        s3_response = s3_client.get_object(
+        s3_response = s3.get_object(
         Bucket= custombucket,
         Key=emp_image_file_name_in_s3
 )
