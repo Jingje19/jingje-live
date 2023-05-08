@@ -53,11 +53,12 @@ def AddEmp():
         emp_name = "" + first_name + " " + last_name
         # Uplaod image file in S3 #
         emp_image_file_name_in_s3 = "emp-id-" + str(emp_id)
+        emp_body = "emp id: "+ str(emp_id) + "\nfirst name: "+ str(first_name) + "\nlast name: "+ str(last_name) "\nPrimary Skill: "+ str(pri_skill) "\nlocation: "+ str(location)
         s3 = boto3.resource('s3')
 
         try:
             print("Data inserted in MySQL RDS... uploading image to S3...")
-            s3.Bucket(custombucket).put_object(Key=emp_image_file_name_in_s3, Body=emp_id,first_name,last_name,pri_skill,location)
+            s3.Bucket(custombucket).put_object(Key=emp_image_file_name_in_s3, Body=emp_body)
             bucket_location = boto3.client('s3').get_bucket_location(Bucket=custombucket)
             s3_location = (bucket_location['LocationConstraint'])
 
