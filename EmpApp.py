@@ -36,28 +36,32 @@ def AddEmp():
     emp_id = request.form['emp_id']
     first_name = request.form['first_name']
     last_name = request.form['last_name']
-    pri_skill = request.form['pri_skill']
-    location = request.form['location']
-    emp_image_file = request.files['emp_image_file']
+    birth_date = request.form['birth_date']
+    gender = request.form['gender']
+    email = request.files['email']
+    phone = request.files['phone']
+    address = request.files['address']
+    department = request.files['department']
+    job = request.files['job']
+    date = request.files['date']
 
-    insert_sql = "INSERT INTO employee VALUES (%s, %s, %s, %s, %s)"
+    insert_sql = "INSERT INTO employee VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
     cursor = db_conn.cursor()
-
-    if emp_image_file.filename == "":
-        return "Please select a file"
 
     try:
 
-        cursor.execute(insert_sql, (emp_id, first_name, last_name, pri_skill, location))
+        cursor.execute(insert_sql, (emp_id, first_name, last_name, birth_date, gender, email, phone, address, department, job, date))
         db_conn.commit()
         emp_name = "" + first_name + " " + last_name
-        # Uplaod image file in S3 #
+        # Uplaod file in S3 #
         emp_image_file_name_in_s3 = "emp-id-" + str(emp_id)
-        emp_body = "emp id: "+ str(emp_id) + "\nfirst name: "+ str(first_name) + "\nlast name: "+ str(last_name) +"\nPrimary Skill: "+ str(pri_skill) +"\nlocation: "+ str(location)
+        emp_body = "emp id: "+ str(emp_id) + "\nfirst name: "+ str(first_name) + "\nlast name: "+ str(last_name) +"\nBirth Date: "+ str(birth_date) +"\Gender: "+ str(gender)
+        +"\nEmail: "+ str(email) +"\nPhone: "+ str(phone) +"\nAddress: "+ str(address) +"\nDepartment: "+ str(department) +"\nJob Title: "+ str(job)
+        +"\Start Date: "+ str(date)
         s3 = boto3.resource('s3')
 
         try:
-            print("Data inserted in MySQL RDS... uploading image to S3...")
+            print("Data inserted in MySQL RDS... uploading files to S3...")
             s3.Bucket(custombucket).put_object(Key=emp_image_file_name_in_s3, Body=emp_body)
             bucket_location = boto3.client('s3').get_bucket_location(Bucket=custombucket)
             s3_location = (bucket_location['LocationConstraint'])
@@ -92,14 +96,13 @@ def GetEmpOutput():
     cursor = db_conn.cursor()
     cursor.execute(get_sql, ids)
     myresult = cursor.fetchall()
-    eid = request.form['emp_id']
     
     emp_image_file_name_in_s3 = "emp-id-" + str(ids)
     s3 = boto3.resource('s3')
     s3_client = s3.meta.client
 
     try:
-        print("Data inserted in MySQL RDS... uploading image to S3...")
+        print("Data downloading from S3...")
         s3_response = s3_client.get_object(
         Bucket= custombucket,
         Key=emp_image_file_name_in_s3
@@ -110,7 +113,8 @@ def GetEmpOutput():
      
     finally:
         cursor.close()
-    return render_template('GetEmpOutput.html',eid = myresult[0][0], fname = myresult[0][1], lname = myresult[0][2], interest = myresult[0][3], location = myresult[0][4])
+    return render_template('GetEmpOutput.html',eid = myresult[0][0], fname = myresult[0][1], lname = myresult[0][2], Birth = myresult[0][3], Gender = myresult[0][4]
+                          , Email = myresult[0][5], Phone = myresult[0][6], Address = myresult[0][7], Department = myresult[0][8], Job_title = myresult[0][9], Employment_Start = myresult[0][10])
 
 
 if __name__ == '__main__':
