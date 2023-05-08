@@ -26,9 +26,14 @@ def home():
     return render_template('AddEmp.html')
 
 
-@app.route("/about", methods=['GET','POST'])
+@app.route("/aboutKJJ", methods=['GET','POST'])
 def about():
-    return render_template('about.html')
+    return render_template('http://jingje.s3-website-us-east-1.amazonaws.com/#')
+
+
+@app.route("/aboutHR", methods=['GET','POST'])
+def about():
+    return render_template('http://jingje.s3-website-us-east-1.amazonaws.com/#')
 
 
 @app.route("/addemp", methods=['POST'])
