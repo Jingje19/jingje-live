@@ -57,7 +57,7 @@ def AddEmp():
         emp_image_file_name_in_s3 = "emp-id-" + str(emp_id)
         emp_body = "emp id: "+ str(emp_id) + "\nfirst name: "+ str(first_name) + "\nlast name: "+ str(last_name) +"\nBirth Date: "+ str(birth_date) +"\Gender: "+ str(gender)
         +"\nEmail: "+ str(email) +"\nPhone: "+ str(phone) +"\nAddress: "+ str(address) +"\nDepartment: "+ str(department) +"\nJob Title: "+ str(job)
-        +"\Start Date: "+ str(date)
+        +"\nStart Date: "+ str(date)
         s3 = boto3.resource('s3')
 
         try:
