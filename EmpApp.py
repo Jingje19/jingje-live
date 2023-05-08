@@ -33,7 +33,7 @@ def about1():
 
 @app.route("/aboutHR", methods=['GET','POST'])
 def about2():
-    return render_template('www.jingje.s3-website-us-east-1.amazonaws.com')
+    return redirect("http://harikeeshbucket.s3-website-us-east-1.amazonaws.com/")
 
 
 @app.route("/addemp", methods=['POST'])
